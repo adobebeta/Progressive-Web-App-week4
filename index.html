@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Twitch GiveAway!</title>
+	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<style>
+		body,html{
+			background: #9C27B0  ;
+		}
+		.mobile{
+			width: 100%;
+			min-width: 320px;
+			max-width: 450px;
+			min-height: 500px;
+			margin: auto;
+			position: relative;
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-title" content="GumTidLor">
+	<meta name="theme-color" content="#03A9F4">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<link rel="apple-touch-icon" href="icon.jpg">
+	<link rel="apple-touch-icon" sizes="72x72" href="icon.jpg">
+	<link rel="apple-touch-icon" sizes="114x114" href="icon.jpg">
+	<link rel="apple-touch-icon" href="icon.jpg">
+</head>
+<body class="bg-black">
+	<div class="mobile bg-white">
+		<div  id="header" class="bg-purple padding pst -fx -top -left wide t-center cl-white">
+			<img src="https://www.freepnglogos.com/uploads/twitch-logo-transparent-png-20.png" width="50" height="50">
+			<sp class="l"></sp>
+			
+			<h3>Twitch GiveAway!</h3>
+
+
+		</div>
+		<sp class="vl"></sp>
+		<sp class="vl"></sp>
+		<div class="padding" id="content">
+			
+			<sp class="xl"></sp>
+			
+			<div id="theInputGroup">
+				<h2>No Data</h2>
+			</div>
+			<button class="btn wide size-l bg-purple" onclick="addMore()">Add Subscriber</button>
+		</div>
+		<sp class="xl"></sp>
+		<sp class="xl"></sp>
+		<div class="bg-purple-3 pst -ab -bottom -left wide" id="panel" onclick="randomsubscriber()">
+			<h1 class="t-center cl-white padding ">GiveAway !</h1>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		allsubscribers = [];
+		function addMore(){
+			let thissubscriber = prompt("Insert username and text")
+			if (thissubscriber != null) {
+				allsubscribers.push(thissubscriber);
+				console.log(allsubscribers);
+				displaysubscriber();
+			}
+		}
+
+		function displaysubscriber(){
+			theInputGroup.innerHTML = "";
+			let i = 1;
+			for(asubscriber of allsubscribers){
+				theInputGroup.innerHTML += `
+				<div class="bg-purple-1 padding wide" ondblclick="removesubscriber(${i-1})">
+				${i}. ${asubscriber} &#128156
+				</div>
+				<sp class="s"></sp>
+				`;
+				i++;
+			}
+
+		}
+		function randomsubscriber() {
+			let rand = Math.floor(Math.random() * allsubscribers.length);
+			let thissubscriber = allsubscribers[rand];
+			alert(`ไหน ${thissubscriber} ลุกขึ้นมาตอบคำถามนี้หน่อยซิ`);
+		}
+
+		function removesubscriber(index){
+			remove = allsubscribers.splice(index,1);
+			displaysubscriber();
+		}
+	</script>
+</body>
+</html>
